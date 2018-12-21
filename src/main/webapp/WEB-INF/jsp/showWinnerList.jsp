@@ -18,12 +18,12 @@
     <script src="../../js/bootstrap/3.3.6/bootstrap.min.js"></script>
 </head>
 <body onload="loadWinnerList()" background="../../image/timg.jpg" style="background-size: cover">
-<table style="width: 100%;height: 100%;border: 0">
+<table style="width: 100%;height: 100%;border: 0;margin-top: 10%">
     <thead>
     <!--几等奖，动态-->
     <tr>
-        <td class="text-center" colspan="2" style="height: 85px;color: #ff3f4b;font-size: 26px">
-            <span id="prize">一等奖</span>-中奖名单
+        <td class="text-center" colspan="2" style="height: 85px;color: #ff3f4b;font-size: 45px">
+            <span id="prize">一等奖</span>————中奖名单
         </td>
     </tr>
     </thead>
@@ -36,8 +36,8 @@
     </table>
 </div>
 <div class="text-center" style="margin-top: 20px">
-    <a class="btn btn-success" id="begin" style="width: 110px;height: 45px;font-size: 20px" href="luckDraw">再抽一次</a>
-    <a class="btn btn-danger" id="next" href="luckDrawSetting" style="width: 110px;height: 45px;font-size: 20px">下一奖项</a>
+    <a class="btn btn-success" id="begin" style="width: 110px;height: 45px;font-size: 20px" onclick="oneMoreLuckDraw()">再抽一次</a>
+    <a class="btn btn-danger" id="next" onclick="next()" style="width: 110px;height: 45px;font-size: 20px">下一奖项</a>
 </div>
 </body>
 <script>
@@ -53,7 +53,7 @@
         //         "</tr>";
         //     $("#tBody").append(tr);
         // }
-        var td = "<tr class='text-center'> <td style=\"height: 50px;color: white;font-size:20px'\">\n" +
+        var td = "<tr class='text-center'> <td style=\"height: 50px;color: white;font-size:40px'\">\n" +
             "<p><span style='color:#22e6ff;font-size:40px'>桌号&nbsp;</span><span style='color:red;display:inline-block;width:120px;font-size:40px' class=\"tableId\">${a.tableId}</span>\n" +
             "&nbsp;&nbsp;<span style='color:#22e6ff;font-size:40px'>座位号&nbsp;</span><span style='color:red;display:inline-block;width:120px;font-size:40px' class=\"locationId\">${a.locationId}</span>\n" +
             "&nbsp;&nbsp;<span style='color:#22e6ff;font-size:40px'>姓名&nbsp;</span><span style='color:#8909ff;display:inline-block;width:120px;font-size:40px' class=\"name\">${a.name}</span>\n" +
@@ -93,6 +93,19 @@
                 }
             }, 80);
         }, 2000)
+    }
+
+    /**
+     * 再抽一次
+     */
+    function oneMoreLuckDraw(){
+        localStorage.winnerDrawNumber = 1;
+        window.location.href = 'luckDraw';
+    }
+
+    function next(){
+        localStorage.winnerDrawNumber = 0;
+        window.location.href = 'luckDrawSetting';
     }
 
 </script>
